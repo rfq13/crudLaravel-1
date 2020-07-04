@@ -12,10 +12,37 @@ class pertanyaanModel
     $pertanyaan = DB::table('pertanyaan')->get();
     return $pertanyaan;
   }
+  public static function getId($id)
+  {
+    $pertanyaan = DB::table('pertanyaan')
+      ->where('id', '=', $id)
+      ->first();
+    return $pertanyaan;
+  }
 
   public static function save($data)
   {
-    $new_pertanyaa = DB::table('pertanyaan')->insert($data);
-    return $new_pertanyaa;
+    $pertanyaan = DB::table('pertanyaan')->insert($data);
+    return $pertanyaan;
+  }
+
+  public static function update($data, $id)
+  {
+    unset($data['_token']);
+    unset($data['_method']);
+
+    $update = DB::table('pertanyaan')
+      ->where('id', '=', $id)
+      ->update($data);
+    return $update;
+  }
+
+  public static function delete($id)
+  {
+    $delete = DB::table('pertanyaan')
+      ->where('id', '=', $id)
+      ->delete();
+
+    return $delete;
   }
 }

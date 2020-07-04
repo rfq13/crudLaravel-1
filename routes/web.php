@@ -14,5 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'pertanyaanController@index');
-Route::get('/add', 'pertanyaanController@insert');
-Route::post('/add', 'pertanyaanController@save');
+Route::get('/pertanyaan', 'pertanyaanController@insert');
+Route::get('/pertanyaan/{id}', 'pertanyaanController@edit');
+Route::put('/pertanyaan/{id}', 'pertanyaanController@update');
+Route::get('/pertanyaan/{id}/hapus', 'pertanyaanController@delete');
+Route::post('/pertanyaan', 'pertanyaanController@save');
+Route::get('/jawaban/{id}', 'jawabanController@index');
+Route::post('/jawaban/{id}', 'jawabanController@store');
